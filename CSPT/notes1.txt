@@ -1,0 +1,31 @@
+who found cspt thire twiter account 
+
+https://x.com/whoareme33
+https://x.com/blackarazi
+https://x.com/whoareme33
+
+HackerOne account 
+https://hackerone.com/pactrickbatman?type=user
+https://hackerone.com/whoareme
+
+
+https://matanber.com/blog/cspt-levels
+https://blog.voorivex.team/cloudflare-image-proxy-as-a-cspt-gadget-a-cross-origin-cspt-exploit
+
+Cspt writeups
+https://patrickbatman.hashnode.dev/how-i-took-over-any-account-on-a-major-platform-with-one-click-a-client-side-path-traversal-story
+
+regx for finding cspt vulneble endpoints
+(?:`[^`]*\$\{[^}]+\}[^`]*`|\+\s*[\w.]+\s*\+|"\s*\+\s*[\w.]+\s*|\$\{[^}]+\})
+
+Cspt vulnerable api endpoints 
+
+fetch("/api/posts/get_content/" + post_name);
+fetch(`/api/v1/user/${userPath}`);
+
+url: "/api/v2/teams/" + teamId + "/invites/" + inviteId
+
+"/api/settings/" + settingsPage;
+
+fetch(`https://api.example.com/api/v1/services/${queryParams.serviceId}`, 
+{ headers: { "X-Token": `${user.token}`}}) 
