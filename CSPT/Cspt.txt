@@ -1,0 +1,15 @@
+CSPT lead to csrf,xss,cache deception etc
+
+https://www.doyensec.com/resources/Doyensec_CSPT2CSRF_Whitepaper.pdf
+
+https://medium.com/@renwa/client-side-path-traversal-cspt-bug-bounty-reports-and-techniques-8ee6cd2e7ca1
+
+https://patrickbatman.hashnode.dev/how-i-took-over-any-account-on-a-major-platform-with-one-click-a-client-side-path-traversal-story
+
+https://[redacted]/email-verification/#verify_token=%2e%2e/user?email=attacker@example.com&-randomdata
+
+
+Cookies based xss
+https://youtu.be/Dfvn0UMyH_c?si=viEIwyp9Af9xyTM3
+https://youtu.be/Fh02D8UTiHk?si=3nOv776lE1kSCB0C
+https://youtu.be/cCoSl05I3WA?si=HeZVNeOJnUI6sWnm
